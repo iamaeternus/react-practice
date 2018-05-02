@@ -6,8 +6,9 @@
 
 	<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-	<script>
+	<script type="text/babel">
 		var counter = 0;
 		function onBtnRenderClick() {
 			++counter;
@@ -15,22 +16,24 @@
 
 			var body = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit facere suscipit doloremque nobis iusto fuga. Suscipit illo, ipsa error assumenda ut nemo numquam quis quos voluptate maxime, sed dicta ducimus.";
 
-			var content = React.createElement('div', null, 
-							React.createElement('h1', null, message),
-							React.createElement('hr', null, null),
-							React.createElement('div', null, 
-								React.createElement('p', null, body),
-								React.createElement('span', null, '[Created using React.js')
-							)
-						);
+			var content = (
+				<div>
+					<h1>{message}</h1>
+					<hr />
+					<div>
+						<p>{body}</p>
+						<span>[Created using React.js]</span>
+					</div>
+				</div>
+			)
 		
 			ReactDOM.render(content, document.getElementById('root'));
 		}
 
-		window.addEventListener('DOMContentLoaded', function() {
-			var btnRender = document.getElementById('btnRender');
-			btnRender.addEventListener('click', onBtnRenderClick);
-		});
+		// window.addEventListener('DOMContentLoaded', function() {
+		var btnRender = document.getElementById('btnRender');
+		btnRender.addEventListener('click', onBtnRenderClick);
+		//});
 
 	</script>
 </head>
